@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>470</width>
+    <height>180</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>470</width>
+    <height>180</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>470</width>
+    <height>180</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Frequency Data</string>
+  </property>
+  <widget class="QLineEdit" name="totalLetterCount">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>10</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="TLC_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Total letter count:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="mostCommonLetter">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>50</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="MCL_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>161</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Most common plaintext letter(s):</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="EFV_label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>161</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Expected frequency chi-square:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="expectedFrequencyChiSquare">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>90</y>
+     <width>113</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>140</y>
+     <width>271</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Close</set>
+   </property>
+   <property name="centerButtons">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="expectedFreqTable">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>10</y>
+     <width>151</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <row>
+    <property name="text">
+     <string>A</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>B</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>C</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>D</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>E</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>F</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>G</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>H</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>I</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>J</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>K</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>L</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>M</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>N</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>O</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>P</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>Q</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>R</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>S</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>T</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>U</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>V</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>W</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string>Z</string>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>Exp. Frequency</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+  </widget>
+  <widget class="Line" name="separator">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>10</y>
+     <width>16</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>145</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>145</x>
+     <y>64</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
