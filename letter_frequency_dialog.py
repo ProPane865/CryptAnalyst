@@ -2,9 +2,8 @@ from PyQt5.QtWidgets import QTableWidgetItem, QFileDialog, QDialog
 from PyQt5.uic import loadUi
 
 import csv
-import sigfig
 
-import ciphers.cipher_analysis
+import util.cipher_analysis
 import frequency_data_dialog
 
 class LetterFrequencyDialog(QDialog):
@@ -15,7 +14,7 @@ class LetterFrequencyDialog(QDialog):
         self.plaintext = plaintext
         self.key = key
 
-        self.lfanalyzer = ciphers.cipher_analysis.LFAnalyzer(self.plaintext)
+        self.lfanalyzer = util.cipher_analysis.LFAnalyzer(self.plaintext)
 
         self.calculateButton.clicked.connect(self.showLetterFrequency)
         self.analyzeButton.clicked.connect(self.showFrequencyData)
@@ -28,20 +27,7 @@ class LetterFrequencyDialog(QDialog):
                 pass
 
     def showFrequencyData(self):
-        self.fdd = frequency_data_dialog.FrequencyDataDialog()
-
-        self.fdd.totalLetterCount.clear()
-        self.fdd.totalLetterCount.insert(str(self.lfanalyzer.getLetterCount()))
-
-        self.fdd.mostCommonLetter.clear()
-        self.fdd.mostCommonLetter.insert(str(self.lfanalyzer.findMostCommonLetters()))
-
-        self.fdd.expectedFrequencyChiSquare.clear()
-        self.fdd.expectedFrequencyChiSquare.insert(str(self.lfanalyzer.calculateChiSquare()))
-
-        for i in range(26):
-            self.fdd.expectedFreqTable.setItem(i, 0, QTableWidgetItem(str(sigfig.round(100 * self.lfanalyzer.getDefaultFrequencyPercentage()[str(chr(ord("A") + i))], sigfigs=3)) + "%"))
-
+        self.fdd = frequency_data_dialog.FrequencyDataDialog(self.lfanalyzer)
         self.fdd.exec()
 
     def saveLetterFrequency(self):
