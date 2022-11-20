@@ -15,8 +15,8 @@ class LetterFrequencyDialog(QDialog):
         self.key = key
 
         self.lfanalyzer = util.cipher_analysis.LFAnalyzer(self.plaintext)
+        self.showLetterFrequency()
 
-        self.calculateButton.clicked.connect(self.showLetterFrequency)
         self.analyzeButton.clicked.connect(self.showFrequencyData)
         self.saveButton.clicked.connect(self.saveLetterFrequency)
 

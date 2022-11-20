@@ -7,6 +7,7 @@ import util.cipher_encoding
 import letter_frequency_dialog
 import key_creator_dialog
 import word_patterns_dialog
+import about_CA_dialog
 
 class ApplicationFrame(QMainWindow):
     def __init__(self, parent=None):
@@ -19,6 +20,7 @@ class ApplicationFrame(QMainWindow):
         self.encodeButton.clicked.connect(self.encode)
         self.actionLetter_Frequency.triggered.connect(self.openLetterFrequencyDialog)
         self.actionWord_Patterns.triggered.connect(self.openWordPatternsDialog)
+        self.actionAbout_CryptAnalyst.triggered.connect(self.openAboutCADialog)
 
     def getPlaintext(self):
         return self.plaintextEdit.toPlainText()
@@ -36,6 +38,10 @@ class ApplicationFrame(QMainWindow):
     def openKeyCreatorDialog(self):
         self.kcd = key_creator_dialog.KeyCreatorDialog()
         self.kcd.exec()
+
+    def openAboutCADialog(self):
+        self.acad = about_CA_dialog.AboutCADialog()
+        self.acad.exec()
 
     def encode(self):
         self.encoder = util.cipher_encoding.Encoder(self.getPlaintext().upper())

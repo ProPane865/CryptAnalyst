@@ -206,8 +206,15 @@
     <addaction name="actionLetter_Frequency"/>
     <addaction name="actionWord_Patterns"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout_CryptAnalyst"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAnalysis"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionExit">
@@ -223,6 +230,11 @@
   <action name="actionWord_Patterns">
    <property name="text">
     <string>Word Patterns</string>
+   </property>
+  </action>
+  <action name="actionAbout_CryptAnalyst">
+   <property name="text">
+    <string>About CryptAnalyst</string>
    </property>
   </action>
  </widget>

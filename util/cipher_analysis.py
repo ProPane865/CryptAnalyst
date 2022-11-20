@@ -149,15 +149,18 @@ class WordAnalyzer():
             gen_frequencies = {}
 
             for frequency in frequencies:
-                i_frequency = int(frequency)
-                if i_frequency / total > 0.08:
-                    gen_frequencies[str(i_frequency)] = "H"
-                elif i_frequency / total > 0.05:
-                    gen_frequencies[str(i_frequency)] = "M"
-                elif i_frequency / total < 0.05:
-                    gen_frequencies[str(i_frequency)] = "L"
+                try:
+                    i_frequency = int(frequency)
+                    if i_frequency / total > 0.08:
+                        gen_frequencies[str(i_frequency)] = "H"
+                    elif i_frequency / total > 0.05:
+                        gen_frequencies[str(i_frequency)] = "M"
+                    elif i_frequency / total < 0.05:
+                        gen_frequencies[str(i_frequency)] = "L"
 
-                newpattern.append(gen_frequencies[frequency])
-                
+                    newpattern.append(gen_frequencies[frequency])
+                except ValueError:
+                    pass
+
             newpatterns.append("".join(newpattern))
         return newpatterns
