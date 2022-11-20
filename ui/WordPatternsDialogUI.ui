@@ -54,6 +54,16 @@
      <string>Exp. LF Pattern</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>GObs. LF Pattern</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>GExp. LF Pattern</string>
+    </property>
+   </column>
   </widget>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">

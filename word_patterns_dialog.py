@@ -16,6 +16,8 @@ class WordPatternsDialog(QDialog):
         charpatterns = self.wordanalyzer.getLetterPatterns(encoder)
         olfpatterns = self.wordanalyzer.getRawObsFreqPatterns()
         elfpatterns = self.wordanalyzer.getRawExpFreqPatterns()
+        golfpatterns = self.wordanalyzer.getGenFreqPatterns(olfpatterns)
+        gelfpatterns = self.wordanalyzer.getGenFreqPatterns(elfpatterns)
 
         self.wordTable.setRowCount(len(words))
         i = 0
@@ -33,4 +35,12 @@ class WordPatternsDialog(QDialog):
         i = 0
         for pattern in elfpatterns:
             self.wordTable.setItem(i, 3, QTableWidgetItem(pattern))
+            i += 1
+        i = 0
+        for pattern in golfpatterns:
+            self.wordTable.setItem(i, 4, QTableWidgetItem(pattern))
+            i += 1
+        i = 0
+        for pattern in gelfpatterns:
+            self.wordTable.setItem(i, 5, QTableWidgetItem(pattern))
             i += 1
