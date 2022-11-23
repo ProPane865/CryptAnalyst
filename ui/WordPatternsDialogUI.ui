@@ -25,58 +25,58 @@
   <property name="windowTitle">
    <string>Word Patterns</string>
   </property>
-  <widget class="QTableWidget" name="wordTable">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
      <width>411</width>
-     <height>281</height>
+     <height>311</height>
     </rect>
    </property>
-   <column>
-    <property name="text">
-     <string>Word</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>C-Text Pattern</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Obs. LF Pattern</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>Exp. LF Pattern</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>GObs. LF Pattern</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>GExp. LF Pattern</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QDialogButtonBox" name="buttonBox">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>300</y>
-     <width>411</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Close</set>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTableWidget" name="wordTable">
+      <column>
+       <property name="text">
+        <string>Word</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>C-Text Pattern</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Obs. LF Pattern</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Exp. LF Pattern</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>GObs. LF Pattern</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>GExp. LF Pattern</string>
+       </property>
+      </column>
+     </widget>
+    </item>
+    <item>
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Close</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

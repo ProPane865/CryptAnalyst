@@ -1,5 +1,6 @@
 import sys
 
+from PyQt5 import QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.uic import loadUi
 
@@ -69,7 +70,11 @@ class ApplicationFrame(QMainWindow):
             
 
 if __name__ == "__main__":
+    QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+    QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
+
     app = QApplication(sys.argv)
+
     frame = ApplicationFrame()
     frame.show()
     sys.exit(app.exec())
