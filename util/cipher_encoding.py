@@ -5,21 +5,32 @@ class Encoder():
         self.key = key
         self.plaintext = plaintext
 
-    def genRandomKey(self):
+    def genRandomKey(self, keyType):
         charlist = []
         chardict = {}
 
-        for i in range(26):
-            charlist.append(str(chr(ord("A") + i)))
+        if keyType == "monoalphasub":
+            for i in range(26):
+                charlist.append(str(chr(ord("A") + i)))
 
-        for i in range(26):
-            char = str(chr(ord("A") + i))
+            for i in range(26):
+                char = str(chr(ord("A") + i))
 
-            while char == str(chr(ord("A") + i)):
-                char = random.choice(charlist)
-            
-            chardict[str(chr(ord("A") + i))] = char
-            del charlist[charlist.index(char)]
+                while char == str(chr(ord("A") + i)):
+                    char = random.choice(charlist)
+                
+                chardict[str(chr(ord("A") + i))] = char
+                del charlist[charlist.index(char)]
+    
+        elif keyType == "caesarsub":
+            shift = random.randint(1, 25)
+
+            for i in range(26):
+                if (ord("A") + i + shift) > 90:
+                    char = str(chr(ord("A") + i + shift - 26))
+                else:
+                    char = str(chr(ord("A") + i + shift))
+                chardict[str(chr(ord("A") + i))] = char
 
         self.key = chardict
     

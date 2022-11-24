@@ -47,20 +47,38 @@ class ApplicationFrame(QMainWindow):
     def encode(self):
         self.encoder = util.cipher_encoding.Encoder(self.getPlaintext().upper())
         if self.keyType.currentText() != "<Key>" and self.cipherType.currentText() != "<Cipher Type>":
-            if self.keyType.currentText() == "Random":
-                self.encoder.genRandomKey()
-            elif self.keyType.currentText() == "Custom...":
-                self.openKeyCreatorDialog()
-                self.encoder.setKey(self.kcd.getKey())
-
             if self.cipherType.currentText() == "Aristocrat":
+                if self.keyType.currentText() == "Random":
+                    self.encoder.genRandomKey("monoalphasub")
+                elif self.keyType.currentText() == "Custom...":
+                    self.openKeyCreatorDialog()
+                    self.encoder.setKey(self.kcd.getKey())
+
                 ciphertext = self.encoder.encodeAristocrat()
 
                 self.ciphertextEdit.clear()
                 self.ciphertextEdit.append(ciphertext)
 
             elif self.cipherType.currentText() == "Patristocrat":
+                if self.keyType.currentText() == "Random":
+                    self.encoder.genRandomKey("monoalphasub")
+                elif self.keyType.currentText() == "Custom...":
+                    self.openKeyCreatorDialog()
+                    self.encoder.setKey(self.kcd.getKey())
+
                 ciphertext = self.encoder.encodePatristocrat()
+
+                self.ciphertextEdit.clear()
+                self.ciphertextEdit.append(ciphertext)
+
+            elif self.cipherType.currentText() == "Caesar":
+                if self.keyType.currentText() == "Random":
+                    self.encoder.genRandomKey("caesarsub")
+                elif self.keyType.currentText() == "Custom...":
+                    self.openKeyCreatorDialog()
+                    self.encoder.setKey(self.kcd.getKey())
+
+                ciphertext = self.encoder.encodeAristocrat()
 
                 self.ciphertextEdit.clear()
                 self.ciphertextEdit.append(ciphertext)
