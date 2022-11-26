@@ -1,8 +1,8 @@
 import sys
 
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.uic import loadUi
+from PyQt6 import QtCore
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.uic import loadUi
 
 import util.cipher_encoding
 import letter_frequency_dialog
@@ -88,11 +88,9 @@ class ApplicationFrame(QMainWindow):
             
 
 if __name__ == "__main__":
-    QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-    QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-
     app = QApplication(sys.argv)
 
     frame = ApplicationFrame()
     frame.show()
+    
     sys.exit(app.exec())

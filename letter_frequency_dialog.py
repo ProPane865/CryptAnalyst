@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QTableWidgetItem, QFileDialog, QDialog
-from PyQt5.uic import loadUi
+from PyQt6.QtWidgets import QTableWidgetItem, QFileDialog, QDialog
+from PyQt6.uic import loadUi
 
 import csv
 
