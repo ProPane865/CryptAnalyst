@@ -1,15 +1,19 @@
-from PyQt6.QtWidgets import QDialog, QTableWidgetItem
+from PyQt6.QtWidgets import QDialog, QTableWidgetItem, QFileDialog
 from PyQt6.uic import loadUi
 
 import util.cipher_analysis
 
 class WordPatternsDialog(QDialog):
-    def __init__(self, text, parent=None):
+    def __init__(self, text, datawriter, parent=None):
         super().__init__(parent)
         loadUi("ui/WordPatternsDialogUI.ui", self)
 
         self.text = text
         self.wordanalyzer = util.cipher_analysis.WordAnalyzer(self.text)
+
+        self.datawriter = datawriter
+
+        self.saveButton.clicked.connect(self.saveData)
 
     def displayData(self, encoder):
         words = self.wordanalyzer.getWords()
@@ -44,3 +48,6 @@ class WordPatternsDialog(QDialog):
         for pattern in gelfpatterns:
             self.wordTable.setItem(i, 5, QTableWidgetItem(pattern))
             i += 1
+
+    def saveData(self):
+        self.datawriter.dialogSaveCSV(self.wordTable, ["Word", "C-Text Pattern", "Obs. LF Pattern", "Exp. LF Pattern", "GObs. LF Pattern", "GExp. LF Pattern"])

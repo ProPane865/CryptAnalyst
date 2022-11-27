@@ -7,7 +7,7 @@ import util.cipher_analysis
 import frequency_data_dialog
 
 class LetterFrequencyDialog(QDialog):
-    def __init__(self, plaintext, key, parent=None):
+    def __init__(self, plaintext, key, datawriter, parent=None):
         super().__init__(parent)
         loadUi("ui/LetterFrequencyDialogUI.ui", self)
 
@@ -16,6 +16,8 @@ class LetterFrequencyDialog(QDialog):
 
         self.lfanalyzer = util.cipher_analysis.LFAnalyzer(self.plaintext)
         self.showLetterFrequency()
+
+        self.datawriter = datawriter
 
         self.analyzeButton.clicked.connect(self.showFrequencyData)
         self.saveButton.clicked.connect(self.saveLetterFrequency)
@@ -31,23 +33,7 @@ class LetterFrequencyDialog(QDialog):
         self.fdd.exec()
 
     def saveLetterFrequency(self):
-        dialog = QFileDialog()
-        dialog.setFileMode(QFileDialog.FileMode.AnyFile)
-        dialog.setNameFilter("CSV files (*.csv)")
-        filenames = []
-
-        if dialog.exec():
-            filenames = dialog.selectedFiles()
-
-        for file in filenames:
-            with open(file, "w+") as f:
-                fw = csv.writer(f)
-                fw.writerow(["Plaintext", "Ciphertext", "Frequency"])
-                for i in range(26):
-                    try:
-                        fw.writerow([self.freqTable.item(i, 0).text(), self.freqTable.item(i, 1).text(), self.freqTable.item(i, 2).text()])
-                    except AttributeError:
-                        pass
+        self.datawriter.dialogSaveCSV(self.freqTable, ["Plaintext", "Ciphertext", "Frequency"])
 
     def showLetterFrequency(self):
         frequency = self.lfanalyzer.getLetterFrequency()
