@@ -2,12 +2,13 @@
 A simple cryptography analysis software.
 
 # Planned for 0.1
-- [x] Fix GUI Scaling Bug [DONE]
-- [x] Implement Caesar Cipher [DONE]
+- [x] Fix GUI Scaling Bug
+- [x] Implement Caesar Cipher
 - [ ] Implement Matrix Determinant Ciphers
 - [ ] Implement Mod Arithmetic Ciphers
-- [x] Add ability to export word pattern data [DONE]
-- [x] Add ability to import plaintext [DONE]
+- [x] Add ability to export word pattern data
+- [x] Add ability to import plaintext
+- [ ] Automatic update detection
 
 # Planned for 0.2
 - [ ] Add decryption tools

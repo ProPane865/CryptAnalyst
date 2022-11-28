@@ -42,8 +42,12 @@ class ApplicationFrame(QMainWindow):
 
         self.wpd.exec()
 
-    def openKeyCreatorDialog(self):
-        self.kcd = key_creator_dialog.KeyCreatorDialog()
+    def openKeyCreatorDialogMAS(self):
+        self.kcd = key_creator_dialog.KeyCreatorDialogMAS()
+        self.kcd.exec()
+
+    def openKeyCreatorDialogCS(self):
+        self.kcd = key_creator_dialog.KeyCreatorDialogCS()
         self.kcd.exec()
 
     def openAboutCADialog(self):
@@ -61,7 +65,7 @@ class ApplicationFrame(QMainWindow):
                 if self.keyType.currentText() == "Random":
                     self.encoder.genRandomKey("monoalphasub")
                 elif self.keyType.currentText() == "Custom...":
-                    self.openKeyCreatorDialog()
+                    self.openKeyCreatorDialogMAS()
                     self.encoder.setKey(self.kcd.getKey())
 
                 ciphertext = self.encoder.encodeAristocrat()
@@ -73,7 +77,7 @@ class ApplicationFrame(QMainWindow):
                 if self.keyType.currentText() == "Random":
                     self.encoder.genRandomKey("monoalphasub")
                 elif self.keyType.currentText() == "Custom...":
-                    self.openKeyCreatorDialog()
+                    self.openKeyCreatorDialogMAS()
                     self.encoder.setKey(self.kcd.getKey())
 
                 ciphertext = self.encoder.encodePatristocrat()
@@ -85,7 +89,7 @@ class ApplicationFrame(QMainWindow):
                 if self.keyType.currentText() == "Random":
                     self.encoder.genRandomKey("caesarsub")
                 elif self.keyType.currentText() == "Custom...":
-                    self.openKeyCreatorDialog()
+                    self.openKeyCreatorDialogCS()
                     self.encoder.setKey(self.kcd.getKey())
 
                 ciphertext = self.encoder.encodeAristocrat()
