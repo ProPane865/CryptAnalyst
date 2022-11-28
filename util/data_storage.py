@@ -2,6 +2,27 @@ from PyQt6.QtWidgets import QFileDialog, QTableWidget
 
 import csv
 
+class DataReader():
+    def __init__(self):
+        pass
+
+    def dialogGetDataFile(self):
+        dialog = QFileDialog()
+        dialog.setFileMode(QFileDialog.FileMode.ExistingFile)
+        dialog.setNameFilter("Text files (*.txt)")
+        filenames = []
+
+        data = ""
+
+        if dialog.exec():
+            filenames = dialog.selectedFiles()
+
+        for file in filenames:
+            with open(f"{file}", "r") as f:
+                data = f.read()
+
+        return data
+
 class DataWriter():
     def __init__(self):
         pass

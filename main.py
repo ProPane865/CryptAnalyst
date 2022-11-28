@@ -21,11 +21,13 @@ class ApplicationFrame(QMainWindow):
         self.encoder.setKey({})
 
         self.datawriter = util.data_storage.DataWriter()
+        self.datareader = util.data_storage.DataReader()
 
         self.encodeButton.clicked.connect(self.encode)
         self.actionLetter_Frequency.triggered.connect(self.openLetterFrequencyDialog)
         self.actionWord_Patterns.triggered.connect(self.openWordPatternsDialog)
         self.actionAbout_CryptAnalyst.triggered.connect(self.openAboutCADialog)
+        self.actionImport_Plaintext.triggered.connect(self.importPlaintext)
 
     def getPlaintext(self):
         return self.plaintextEdit.toPlainText()
@@ -47,6 +49,10 @@ class ApplicationFrame(QMainWindow):
     def openAboutCADialog(self):
         self.acad = about_CA_dialog.AboutCADialog()
         self.acad.exec()
+
+    def importPlaintext(self):
+        self.plaintextEdit.clear()
+        self.plaintextEdit.append(self.datareader.dialogGetDataFile())
 
     def encode(self):
         self.encoder = util.cipher_encoding.Encoder(self.getPlaintext().upper())
