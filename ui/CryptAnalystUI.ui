@@ -214,6 +214,7 @@
     <property name="title">
      <string>Help</string>
     </property>
+    <addaction name="actionCheck_for_Updates"/>
     <addaction name="actionAbout_CryptAnalyst"/>
    </widget>
    <addaction name="menuFile"/>
@@ -244,6 +245,11 @@
   <action name="actionImport_Plaintext">
    <property name="text">
     <string>Import Plaintext</string>
+   </property>
+  </action>
+  <action name="actionCheck_for_Updates">
+   <property name="text">
+    <string>Check for Updates</string>
    </property>
   </action>
  </widget>

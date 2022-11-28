@@ -10,11 +10,17 @@ import dialogs.letter_frequency_dialog
 import dialogs.key_creator_dialog
 import dialogs.word_patterns_dialog
 import dialogs.about_CA_dialog
+import dialogs.update_dialog
 
-class ApplicationFrame(QMainWindow):
+import requests
+
+class Application(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
         loadUi("ui/CryptAnalystUI.ui", self)
+
+        self.version = [0, 1, 0]
+        self.builddate = "28, November 2022"
 
         self.encoder = util.cipher_encoding.Encoder("")
         self.encoder.setKey({})
@@ -27,9 +33,49 @@ class ApplicationFrame(QMainWindow):
         self.actionWord_Patterns.triggered.connect(self.openWordPatternsDialog)
         self.actionAbout_CryptAnalyst.triggered.connect(self.openAboutCADialog)
         self.actionImport_Plaintext.triggered.connect(self.importPlaintext)
+        self.actionCheck_for_Updates.triggered.connect(self.checkForUpdates)
+
+    def checkForUpdates(self):
+        response = requests.get("https://propane865.netlify.app/software/cryptanalyst/latestversion.txt")
+        latest_version_str = response.text.split(".")
+        latest_version = [int(n) for n in latest_version_str]
+
+        avail = False
+
+        if (latest_version[0] > self.version[0]):
+            avail = True
+        elif (latest_version[0] == self.version[0]) and (latest_version[1] > self.version[1]):
+            avail = True
+        elif (latest_version[0] == self.version[0]) and (latest_version[1] == self.version[1]) and (latest_version[2] > self.version[2]):
+            avail = True
+        else:
+            avail = False
+
+        if avail:
+            self.openUpdateDialog("A new update for CryptAnalyst is now available!", self.getCurrentVersion(), response.text)
+        else:
+            self.openUpdateDialog("No new update for CryptAnalyst is available.", self.getCurrentVersion(), response.text)
+
+    def getCurrentVersion(self):
+        return ".".join([str(n) for n in self.version])
+    
+    def getBuildDate(self):
+        return self.builddate
 
     def getPlaintext(self):
         return self.plaintextEdit.toPlainText()
+    
+    def openUpdateDialog(self, text, cv, lv):
+        self.upd = dialogs.update_dialog.UpdateDialog()
+        self.upd.title.setText(text)
+
+        self.upd.currentVersion.clear()
+        self.upd.latestVersion.clear()
+
+        self.upd.currentVersion.insert(cv)
+        self.upd.latestVersion.insert(lv)
+
+        self.upd.exec()
 
     def openLetterFrequencyDialog(self):
         self.lfd = dialogs.letter_frequency_dialog.LetterFrequencyDialog(self.getPlaintext().upper(), self.encoder.getKey(), self.datawriter)
@@ -59,6 +105,8 @@ class ApplicationFrame(QMainWindow):
 
     def openAboutCADialog(self):
         self.acad = dialogs.about_CA_dialog.AboutCADialog()
+        self.acad.version.setText(f"Version: {self.getCurrentVersion()}")
+        self.acad.buildDate.setText(f"Build Date: {self.getBuildDate()}")
         self.acad.exec()
 
     def importPlaintext(self):
@@ -146,7 +194,7 @@ class ApplicationFrame(QMainWindow):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    frame = ApplicationFrame()
+    frame = Application()
     frame.show()
     
     sys.exit(app.exec())
