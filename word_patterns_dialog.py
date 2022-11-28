@@ -23,31 +23,17 @@ class WordPatternsDialog(QDialog):
         golfpatterns = self.wordanalyzer.getGenFreqPatterns(olfpatterns)
         gelfpatterns = self.wordanalyzer.getGenFreqPatterns(elfpatterns)
 
-        self.wordTable.setRowCount(len(words))
-        i = 0
-        for word in words:
-            self.wordTable.setItem(i, 0, QTableWidgetItem(word))
-            i += 1
-        i = 0
-        for pattern in charpatterns:
-            self.wordTable.setItem(i, 1, QTableWidgetItem(pattern))
-            i += 1
-        i = 0
-        for pattern in olfpatterns:
-            self.wordTable.setItem(i, 2, QTableWidgetItem(pattern))
-            i += 1
-        i = 0
-        for pattern in elfpatterns:
-            self.wordTable.setItem(i, 3, QTableWidgetItem(pattern))
-            i += 1
-        i = 0
-        for pattern in golfpatterns:
-            self.wordTable.setItem(i, 4, QTableWidgetItem(pattern))
-            i += 1
-        i = 0
-        for pattern in gelfpatterns:
-            self.wordTable.setItem(i, 5, QTableWidgetItem(pattern))
-            i += 1
+        tabledata = [words, charpatterns, olfpatterns, elfpatterns, golfpatterns, gelfpatterns]
+
+        rowsCount = len(words)
+        columnsCount = len(tabledata)
+
+        self.wordTable.setRowCount(rowsCount)
+
+        for i in range(rowsCount):
+            for j in range(columnsCount):
+                self.wordTable.setItem(i, j, QTableWidgetItem(tabledata[j][i]))
 
     def saveData(self):
-        self.datawriter.dialogSaveCSV(self.wordTable, ["Word", "C-Text Pattern", "Obs. LF Pattern", "Exp. LF Pattern", "GObs. LF Pattern", "GExp. LF Pattern"])
+        data = self.datawriter.getTableData(self.wordTable, ["Word", "C-Text Pattern", "Obs. LF Pattern", "Exp. LF Pattern", "GObs. LF Pattern", "GExp. LF Pattern"])
+        self.datawriter.dialogSaveCSV(data)

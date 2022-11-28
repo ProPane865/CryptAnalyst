@@ -1,8 +1,6 @@
 from PyQt6.QtWidgets import QTableWidgetItem, QFileDialog, QDialog
 from PyQt6.uic import loadUi
 
-import csv
-
 import util.cipher_analysis
 import frequency_data_dialog
 
@@ -33,7 +31,8 @@ class LetterFrequencyDialog(QDialog):
         self.fdd.exec()
 
     def saveLetterFrequency(self):
-        self.datawriter.dialogSaveCSV(self.freqTable, ["Plaintext", "Ciphertext", "Frequency"])
+        data = self.datawriter.getTableData(self.freqTable, ["Plaintext", "Ciphertext", "Frequency"])
+        self.datawriter.dialogSaveCSV(data)
 
     def showLetterFrequency(self):
         frequency = self.lfanalyzer.getLetterFrequency()
