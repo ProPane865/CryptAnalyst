@@ -2,6 +2,7 @@ import csv
 import sigfig
 
 import util.cipher_encoding
+import util.data_storage
 
 class LFAnalyzer():
     def __init__(self, text):
@@ -16,7 +17,7 @@ class LFAnalyzer():
     def getDefaultFrequencyPercentage(self):
         frequency = {}
 
-        with open("data/default_frequencies.csv", "r") as f:
+        with open(util.data_storage.resource_path("data/default_frequencies.csv"), "r") as f:
             fr = csv.DictReader(f)
             sum = 4374127904
             

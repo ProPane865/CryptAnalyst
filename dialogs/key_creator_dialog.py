@@ -1,10 +1,12 @@
 from PyQt6.QtWidgets import QDialog
 from PyQt6.uic import loadUi
 
+import util.data_storage
+
 class KeyCreatorDialogMAS(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("ui/KeyCreatorDialogMASUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/KeyCreatorDialogMASUI.ui"), self)
 
         self.key = {}
 
@@ -16,7 +18,7 @@ class KeyCreatorDialogMAS(QDialog):
 class KeyCreatorDialogCS(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("ui/KeyCreatorDialogCSUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/KeyCreatorDialogCSUI.ui"), self)
 
         self.key = {}
 
@@ -33,7 +35,7 @@ class KeyCreatorDialogCS(QDialog):
 class KeyCreatorDialogA(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("ui/KeyCreatorDialogAUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/KeyCreatorDialogAUI.ui"), self)
 
         self.key = {}
 
@@ -51,7 +53,7 @@ class KeyCreatorDialogA(QDialog):
 class KeyCreatorDialogAT(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("ui/KeyCreatorDialogATUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/KeyCreatorDialogATUI.ui"), self)
 
         self.key = {}
 

@@ -2,12 +2,13 @@ from PyQt6.QtWidgets import QTableWidgetItem, QFileDialog, QDialog
 from PyQt6.uic import loadUi
 
 import util.cipher_analysis
+import util.data_storage
 import dialogs.frequency_data_dialog
 
 class LetterFrequencyDialog(QDialog):
     def __init__(self, plaintext, key, datawriter, parent=None):
         super().__init__(parent)
-        loadUi("ui/LetterFrequencyDialogUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/LetterFrequencyDialogUI.ui"), self)
 
         self.plaintext = plaintext
         self.key = key

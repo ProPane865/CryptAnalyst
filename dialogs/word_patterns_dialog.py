@@ -2,11 +2,12 @@ from PyQt6.QtWidgets import QDialog, QTableWidgetItem, QFileDialog
 from PyQt6.uic import loadUi
 
 import util.cipher_analysis
+import util.data_storage
 
 class WordPatternsDialog(QDialog):
     def __init__(self, text, datawriter, parent=None):
         super().__init__(parent)
-        loadUi("ui/WordPatternsDialogUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/WordPatternsDialogUI.ui"), self)
 
         self.text = text
         self.wordanalyzer = util.cipher_analysis.WordAnalyzer(self.text)

@@ -17,7 +17,7 @@ import requests
 class Application(QMainWindow):
     def __init__(self, parent=None):
         super().__init__(parent)
-        loadUi("ui/CryptAnalystUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/CryptAnalystUI.ui"), self)
 
         self.version = [0, 1, 0]
         self.builddate = "28, November 2022"

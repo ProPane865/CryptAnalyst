@@ -2,11 +2,12 @@ from PyQt6.QtWidgets import QDialog, QTableWidgetItem
 from PyQt6.uic import loadUi
 
 import sigfig
+import util.data_storage
 
 class FrequencyDataDialog(QDialog):
     def __init__(self, lfanalyzer, parent=None):
         super().__init__(parent)
-        loadUi("ui/FrequencyDataDialogUI.ui", self)
+        loadUi(util.data_storage.resource_path("ui/FrequencyDataDialogUI.ui"), self)
 
         self.lfanalyzer = lfanalyzer
 
