@@ -2,7 +2,7 @@ from PyQt6.QtWidgets import QTableWidgetItem, QFileDialog, QDialog
 from PyQt6.uic import loadUi
 
 import util.cipher_analysis
-import frequency_data_dialog
+import dialogs.frequency_data_dialog
 
 class LetterFrequencyDialog(QDialog):
     def __init__(self, plaintext, key, datawriter, parent=None):
@@ -27,7 +27,7 @@ class LetterFrequencyDialog(QDialog):
                 pass
 
     def showFrequencyData(self):
-        self.fdd = frequency_data_dialog.FrequencyDataDialog(self.lfanalyzer)
+        self.fdd = dialogs.frequency_data_dialog.FrequencyDataDialog(self.lfanalyzer)
         self.fdd.exec()
 
     def saveLetterFrequency(self):

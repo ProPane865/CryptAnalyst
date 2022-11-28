@@ -92,17 +92,27 @@
              </item>
              <item>
               <property name="text">
+               <string>Affine</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>Aristocrat</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>Patristocrat</string>
+               <string>Atbash</string>
               </property>
              </item>
              <item>
               <property name="text">
                <string>Caesar</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Patristocrat</string>
               </property>
              </item>
             </widget>

@@ -21,16 +21,32 @@ class Encoder():
                 
                 chardict[str(chr(ord("A") + i))] = char
                 del charlist[charlist.index(char)]
-    
-        elif keyType == "caesarsub":
-            shift = random.randint(1, 25)
+
+        elif keyType == "affine":
+            a = random.randint(2, 100)
+            b = random.randint(1, 25)
+            x = lambda c: ord(c) - 65
 
             for i in range(26):
-                if (ord("A") + i + shift) > 90:
-                    char = str(chr(ord("A") + i + shift - 26))
-                else:
-                    char = str(chr(ord("A") + i + shift))
-                chardict[str(chr(ord("A") + i))] = char
+                char = ((a * x(str(chr(ord("A") + i)))) + b) % 26
+                chardict[str(chr(ord("A") + i))] = chr(char + 65)
+    
+        elif keyType == "caesarsub":
+            s = random.randint(1, 25)
+            x = lambda c: ord(c) - 65
+
+            for i in range(26):
+                char = ((x(str(chr(ord("A") + i)))) + s) % 26
+                chardict[str(chr(ord("A") + i))] = chr(char + 65)
+
+        elif keyType == "atbash":
+            a = 25
+            b = 25
+            x = lambda c: ord(c) - 65
+
+            for i in range(26):
+                char = ((a * x(str(chr(ord("A") + i)))) + b) % 26
+                chardict[str(chr(ord("A") + i))] = chr(char + 65)
 
         self.key = chardict
     
@@ -40,7 +56,7 @@ class Encoder():
     def setKey(self, keydict):
         self.key = keydict
 
-    def encodeAristocrat(self):
+    def encodeWithSpaces(self):
         plaintext_words = self.plaintext.split(" ")
         ciphertext_words = []
 
@@ -57,7 +73,7 @@ class Encoder():
         ciphertext = " ".join(ciphertext_words)
         return ciphertext
 
-    def encodePatristocrat(self):
+    def encodeWithoutSpaces(self):
         plaintext_words = self.plaintext.split(" ")
         ciphertext_words = []
 

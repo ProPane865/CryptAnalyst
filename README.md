@@ -5,7 +5,7 @@ A simple cryptography analysis software.
 - [x] Fix GUI Scaling Bug
 - [x] Implement Caesar Cipher
 - [ ] Implement Matrix Determinant Ciphers
-- [ ] Implement Mod Arithmetic Ciphers
+- [x] Implement Mod Arithmetic Ciphers
 - [x] Add ability to export word pattern data
 - [x] Add ability to import plaintext
 - [ ] Automatic update detection
