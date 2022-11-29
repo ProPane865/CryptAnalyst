@@ -5,10 +5,10 @@ block_cipher = None
 
 
 a = Analysis(
-    ['./rep/main.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[("./rep/data/*", "data"), ("./rep/ui/*", "ui")],
+    datas=[("./data/*", "data"), ("./ui/*", "ui")],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
