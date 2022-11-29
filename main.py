@@ -11,6 +11,7 @@ import dialogs.key_creator_dialog
 import dialogs.word_patterns_dialog
 import dialogs.about_CA_dialog
 import dialogs.update_dialog
+import dialogs.update_fail_dialog
 
 import requests
 
@@ -19,7 +20,7 @@ class Application(QMainWindow):
         super().__init__(parent)
         loadUi(util.data_storage.resource_path("ui/CryptAnalystUI.ui"), self)
 
-        self.version = [0, 1, 0]
+        self.version = [0, 1, 1]
         self.builddate = "28, November 2022"
 
         self.encoder = util.cipher_encoding.Encoder("")
@@ -36,25 +37,28 @@ class Application(QMainWindow):
         self.actionCheck_for_Updates.triggered.connect(self.checkForUpdates)
 
     def checkForUpdates(self):
-        response = requests.get("https://propane865.netlify.app/software/cryptanalyst/latestversion.txt")
-        latest_version_str = response.text.split(".")
-        latest_version = [int(n) for n in latest_version_str]
+        try:
+            response = requests.get("https://propane865.netlify.app/software/cryptanalyst/latestversion.txt")
+            latest_version_str = response.text.split(".")
+            latest_version = [int(n) for n in latest_version_str]
 
-        avail = False
-
-        if (latest_version[0] > self.version[0]):
-            avail = True
-        elif (latest_version[0] == self.version[0]) and (latest_version[1] > self.version[1]):
-            avail = True
-        elif (latest_version[0] == self.version[0]) and (latest_version[1] == self.version[1]) and (latest_version[2] > self.version[2]):
-            avail = True
-        else:
             avail = False
 
-        if avail:
-            self.openUpdateDialog("A new update for CryptAnalyst is now available!", self.getCurrentVersion(), response.text)
-        else:
-            self.openUpdateDialog("No new update for CryptAnalyst is available.", self.getCurrentVersion(), response.text)
+            if (latest_version[0] > self.version[0]):
+                avail = True
+            elif (latest_version[0] == self.version[0]) and (latest_version[1] > self.version[1]):
+                avail = True
+            elif (latest_version[0] == self.version[0]) and (latest_version[1] == self.version[1]) and (latest_version[2] > self.version[2]):
+                avail = True
+            else:
+                avail = False
+
+            if avail:
+                self.openUpdateDialog("A new update for CryptAnalyst is now available!", self.getCurrentVersion(), response.text)
+            else:
+                self.openUpdateDialog("No new update for CryptAnalyst is available.", self.getCurrentVersion(), response.text)
+        except requests.exceptions.ConnectionError:
+            self.openUpdateFailDialog()
 
     def getCurrentVersion(self):
         return ".".join([str(n) for n in self.version])
@@ -76,6 +80,10 @@ class Application(QMainWindow):
         self.upd.latestVersion.insert(lv)
 
         self.upd.exec()
+
+    def openUpdateFailDialog(self):
+        self.updf = dialogs.update_fail_dialog.UpdateFailDialog()
+        self.updf.exec()
 
     def openLetterFrequencyDialog(self):
         self.lfd = dialogs.letter_frequency_dialog.LetterFrequencyDialog(self.getPlaintext().upper(), self.encoder.getKey(), self.datawriter)

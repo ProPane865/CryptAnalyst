@@ -1,4 +1,5 @@
 import random
+import math
 
 class Encoder():
     def __init__(self, plaintext="", key={}):
@@ -26,6 +27,11 @@ class Encoder():
             a = random.randint(2, 100)
             b = random.randint(1, 25)
             x = lambda c: ord(c) - 65
+
+            while math.gcd(a, 26) != 1:
+                a = random.randint(2, 100)
+
+            print(a, 26)
 
             for i in range(26):
                 char = ((a * x(str(chr(ord("A") + i)))) + b) % 26
