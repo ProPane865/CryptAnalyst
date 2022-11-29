@@ -176,16 +176,20 @@ class Application(QMainWindow):
     def encode(self):
         self.encoder = util.cipher_encoding.Encoder(self.getPlaintext().upper())
         if self.keyType.currentText() != "<Key>" and self.cipherType.currentText() != "<Cipher Type>":
-            if self.cipherType.currentText() == "Aristocrat":
-                self.encodeAristocrat()
-            elif self.cipherType.currentText() == "Patristocrat":
-                self.encodePatristocrat()
-            elif self.cipherType.currentText() == "Caesar":
-                self.encodeCaesar()
-            elif self.cipherType.currentText() == "Affine":
-                self.encodeAffine()
-            elif self.cipherType.currentText() == "Atbash":
-                self.encodeAtbash()
+            try:
+                if self.cipherType.currentText() == "Aristocrat":
+                    self.encodeAristocrat()
+                elif self.cipherType.currentText() == "Patristocrat":
+                    self.encodePatristocrat()
+                elif self.cipherType.currentText() == "Caesar":
+                    self.encodeCaesar()
+                elif self.cipherType.currentText() == "Affine":
+                    self.encodeAffine()
+                elif self.cipherType.currentText() == "Atbash":
+                    self.encodeAtbash()
+            except Exception:
+                self.ciphertextEdit.clear()
+                self.ciphertextEdit.append("An error has occurred while attempting to encode (make sure the inputs are valid).")
         else:
             self.ciphertextEdit.clear()
             self.ciphertextEdit.append("Please select a key type or cipher type from the corresponding dropdown(s).")
