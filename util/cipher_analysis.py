@@ -95,6 +95,19 @@ class WordAnalyzer():
             words.append(newword)
         return words
 
+    def getWordLengths(self):
+        lengths = []
+        for word in self.getWords():
+            lengths.append(str(len(word)))
+        return lengths
+
+    def getWordCounts(self):
+        counts = []
+        words = self.getWords()
+        for word in words:
+            counts.append(str(words.count(word)))
+        return counts
+
     def getLetterPatterns(self, encoder: util.cipher_encoding.Encoder):
         patterns = []
         key = encoder.getKey()

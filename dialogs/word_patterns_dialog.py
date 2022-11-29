@@ -23,8 +23,10 @@ class WordPatternsDialog(QDialog):
         elfpatterns = self.wordanalyzer.getRawExpFreqPatterns()
         golfpatterns = self.wordanalyzer.getGenFreqPatterns(olfpatterns)
         gelfpatterns = self.wordanalyzer.getGenFreqPatterns(elfpatterns)
+        counts = self.wordanalyzer.getWordCounts()
+        lengths = self.wordanalyzer.getWordLengths()
 
-        tabledata = [words, charpatterns, olfpatterns, elfpatterns, golfpatterns, gelfpatterns]
+        tabledata = [words, charpatterns, olfpatterns, elfpatterns, golfpatterns, gelfpatterns, counts, lengths]
 
         rowsCount = len(words)
         columnsCount = len(tabledata)
@@ -36,5 +38,5 @@ class WordPatternsDialog(QDialog):
                 self.wordTable.setItem(i, j, QTableWidgetItem(tabledata[j][i]))
 
     def saveData(self):
-        data = self.datawriter.getTableData(self.wordTable, ["Word", "C-Text Pattern", "Obs. LF Pattern", "Exp. LF Pattern", "GObs. LF Pattern", "GExp. LF Pattern"])
+        data = self.datawriter.getTableData(self.wordTable, ["Word", "C-Text Pattern", "Obs. LF Pattern", "Exp. LF Pattern", "GObs. LF Pattern", "GExp. LF Pattern", "Frequency", "Length"])
         self.datawriter.dialogSaveCSV(data)

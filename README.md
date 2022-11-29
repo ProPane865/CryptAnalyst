@@ -2,7 +2,7 @@
 A simple cryptography analysis software.
 
 # Planned for 0.2
-- [ ] Add word count and word length in word pattern analysis
+- [x] Add word count and word length in word pattern analysis
 - [ ] Add decryption tools
 - [ ] Create a cipher index (encyclopedia of ciphers)
 - [ ] Create a help screen
