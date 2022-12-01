@@ -1,9 +1,6 @@
 # CryptAnalyst
 A simple cryptography analysis software.
 
-# Planned for 0.1.2
-- [x] Add word count and word length in word pattern analysis
-
 # Planned for a later update
 - [ ] Add decryption tools
 - [ ] Create a help screen
