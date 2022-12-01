@@ -20,8 +20,8 @@ class Application(QMainWindow):
         super().__init__(parent)
         loadUi(util.data_storage.resource_path("ui/CryptAnalystUI.ui"), self)
 
-        self.version = [0, 1, 1]
-        self.builddate = "28, November 2022"
+        self.version = [0, 1, 2]
+        self.builddate = "1, December 2022"
 
         self.encoder = util.cipher_encoding.Encoder("")
         self.encoder.setKey({})

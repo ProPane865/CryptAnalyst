@@ -3,7 +3,6 @@ A simple cryptography analysis software.
 
 # Planned for 0.1.2
 - [x] Add word count and word length in word pattern analysis
-- [ ] Code optimization
 
 # Planned for a later update
 - [ ] Add decryption tools
