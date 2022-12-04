@@ -28,7 +28,7 @@ class DataReader():
             filenames = dialog.selectedFiles()
 
         for file in filenames:
-            with open(f"{file}", "r") as f:
+            with open(f"{file}", "r", encoding="utf-8", errors="ignore") as f:
                 data = f.read()
 
         return data
