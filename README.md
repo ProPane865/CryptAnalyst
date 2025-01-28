@@ -8,5 +8,5 @@ A simple cryptography analysis software.
 
 # Planned for much later (if at all)
 - [ ] Implement Polyalphabetic Substitution Ciphers
-- [ ] Implement Matrix Determinant Ciphers
+- [ ] Implement Matrix Ciphers
 - [ ] Create a cipher index (encyclopedia of ciphers)
